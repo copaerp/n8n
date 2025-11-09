@@ -1,0 +1,1048 @@
+{
+  "name": "new message refactor",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bf32139d-ca1f-4d01-bc45-9d4809368fa9",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        -585
+      ],
+      "id": "44d6723b-8ac1-4648-8a57-36658ff8f5d0",
+      "name": "Webhook",
+      "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Você ainda está por aí? Seu pedido será encerrado em breve.\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -1420
+      ],
+      "id": "a494e625-484c-4be8-8542-a7f25ef5cd6a",
+      "name": "AWS Lambda",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a23f1da-7809-4d11-b570-11469f313961",
+              "leftValue": "={{ $json.body.type }}",
+              "rightValue": "warn",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -640,
+        -1320
+      ],
+      "id": "782ae48f-c658-4ed7-96e8-889d9269b888",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Obrigado pelo contato, quando precisar é só chamar. Até mais!\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -420,
+        -1220
+      ],
+      "id": "e69f1c5b-cb6f-4511-8ca9-aebaf1435015",
+      "name": "AWS Lambda1",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0e0f95f5-c30b-43e8-b52d-65dc1a1684ee",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -860,
+        -1320
+      ],
+      "id": "4051774b-61e1-4071-85a8-38c4964f7c56",
+      "name": "order timeout",
+      "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        -685
+      ],
+      "id": "411a995e-3fed-4e6a-bcff-e5612a0162c9",
+      "name": "AI Agent1",
+      "retryOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-preview-04-17-thinking",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -172,
+        -465
+      ],
+      "id": "50c599a2-45b5-47bf-a48f-cc3f0cb644a5",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "Y5KaDSVRNq7CRQtg",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  var input = item.json.output\n  item.json.body = $('Webhook').first().json.body\n  for (let i = 0; i < input.length; i++) {\n    for (const itemMenu of item.json.body.menu) {\n      if (input[i].id == itemMenu.id) {\n        input[i].price = itemMenu.price\n      }\n    }\n  }\n  item.json.body.parsedAIResponse = input\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        396,
+        -710
+      ],
+      "id": "bd1056d8-f380-4668-a8be-0eea5d566d5f",
+      "name": "parse AI response"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = \"confirming_products\" WHERE id = '{{ $('parse AI response').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        836,
+        -710
+      ],
+      "id": "151d85cf-fdbe-4a9d-9873-aa7187e62e28",
+      "name": "MySQL",
+      "credentials": {
+        "mySql": {
+          "id": "FP6mVqY1Y3BEkBjb",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"array\",\n    \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"id\": {\n                \"type\": \"string\"\n            },\n            \"name\": {\n                \"type\": \"string\"\n            },\n            \"amount\": {\n                \"type\": \"integer\"\n            },\n            \"notes\": {\n                \"type\": [\n                    \"string\",\n                    null\n                ]\n            }\n        },\n        \"required\": [\n            \"id\",\n            \"name\",\n            \"amount\",\n            \"notes\"\n        ]\n    }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -52,
+        -465
+      ],
+      "id": "a820c6fc-a659-4d82-b665-11193a6b713f",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "40000e36-6e01-48fb-b178-f2422c6abf8d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        176,
+        -660
+      ],
+      "id": "1b779bce-5888-43e1-b503-d462fd46e20b",
+      "name": "If1",
+      "alwaysOutputData": false,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "content": "## Fluxo de finalização de conversa por timeout"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        -1540
+      ],
+      "id": "616f8c60-878a-47ff-a9de-50f23e695ade",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "## PoC de seleção de produtos"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -860,
+        -1000
+      ],
+      "id": "948a3afc-bf86-4291-8cb6-68ff7bd85583",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET current_cart = '{{ JSON.stringify($json.output) }}' WHERE id = '{{ $('parse AI response').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1276,
+        -710
+      ],
+      "id": "ac740ab0-d66d-4ddb-ac3b-0b56eb55006b",
+      "name": "MySQL1",
+      "credentials": {
+        "mySql": {
+          "id": "FP6mVqY1Y3BEkBjb",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const input = $('parse AI response').first().json.body.parsedAIResponse\n  const resultArray = []\n  for (let i = 0; i < input.length; i++) {\n    const currentItem = input[i];\n    const jsonString = JSON.stringify(currentItem);\n    const sanitized = jsonString.replace(/'/g, \"''\");\n    resultArray.push(JSON.parse(sanitized));\n  }\n  item.json.output = resultArray\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1056,
+        -710
+      ],
+      "id": "c8c0a7b0-6dc6-4b8c-91a4-31d0a54d57c4",
+      "name": "fixing json field before insert"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "39a1b4c9-f0f7-4cfd-9557-fe4fde3f198d",
+              "name": "isUpdating",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -122,
+        -960
+      ],
+      "id": "bd5af723-4abd-4acf-8965-9b1a7f1a909e",
+      "name": "set isUpdating to false"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4cff6d21-0f0a-4da2-9da5-27478bab6e3e",
+              "name": "isUpdating",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -122,
+        -10
+      ],
+      "id": "9ddd96ee-c808-4fc2-8fae-83b05da472d5",
+      "name": "set isUpdating to true"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $('insert prompt').item.json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Desculpe, não consegui te entender. Tem certeza de que escolheu um produto do cardápio?\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        396,
+        -485
+      ],
+      "id": "06926ec4-9ba0-44dd-83a0-87e706bd59cd",
+      "name": "error dump",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que interpreta pedidos de clientes em linguagem natural e converte em uma lista estruturada de itens de um cardápio.\n\nO cardápio atual é:\n{{ $json.body.menu.map((it) => JSON.stringify({ id: it.id, name: it.name, })).join(\"\\n\") }}\n\nO usuário pode:\n- Adicionar novos itens ao pedido anterior\n- Alterar a quantidade ou detalhes de um item anterior\n- Remover algum item já pedido\n\nSempre retorne a **lista final** completa dos itens do pedido, já atualizada com as alterações solicitadas.\n\nRetorne o resultado em formato JSON com os seguintes campos:\n- id\n- name\n- amount\n- notes (Caso seja necessário, insira aqui observações sobre o produto)\n\nSe necessário, interprete quantidades e modificações mesmo que o cliente não use números diretamente (ex: \"mais um\", \"troque\", \"sem ketchup\", etc.).\n\nFrase do cliente: \"{{ $json.body.message }}\"\n\nItens do pedido anterior:\n{{ $json.body.products.map((it) => JSON.stringify(it)).join(\"\\n\") }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -420,
+        -460
+      ],
+      "id": "5e40758b-8191-426a-99da-765b0567eb71",
+      "name": "update prompt"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que converte pedidos de linguagem natural em itens de um cardápio. \nDado o seguinte cardápio:\n\n{{ $json.body.menu.map((it) => JSON.stringify({ id: it.id, name: it.name, })).join(\"\\n\") }}\n\nRetorne uma lista JSON com os itens mencionados na frase do usuário, contendo os campos:\n- id\n- name\n- amount\n- notes (caso seja necessário, insira aqui observações sobre o produto)\n\nFrase: \"{{ $json.body.message }}\"\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -420,
+        -735
+      ],
+      "id": "381113e1-98eb-4373-b41c-f3842f4a7bf7",
+      "name": "insert prompt"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook').item.json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirms"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b8c34068-cc36-47ea-a9ee-4b7d8e365876",
+                    "leftValue": "={{ $('Webhook').item.json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Wants to edit"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -420,
+        -10
+      ],
+      "id": "423254c0-6156-4cef-bf08-17ebaa925671",
+      "name": "check user confirmation"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Pedido confirmado!\\n\\n*Finalização do pedido da PoC de IA*\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -122,
+        -210
+      ],
+      "id": "594d4fcf-2765-41d9-9f2d-2b6b4f2d2799",
+      "name": "order closing message",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET finished_at = current_timestamp() WHERE id = '{{ $('Webhook').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        176,
+        -210
+      ],
+      "id": "058127c9-0275-4f29-aaa2-deeda906d0a8",
+      "name": "close order",
+      "credentials": {
+        "mySql": {
+          "id": "FP6mVqY1Y3BEkBjb",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $('Webhook').item.json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Aperte um botão para selecionar uma opção\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -122,
+        190
+      ],
+      "id": "6f756f2e-577a-476d-a4b5-3534d637cd25",
+      "name": "invalid response answer",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"{{ $('propagate isUpdating').item.json.isUpdating ? \"*Atualizando pedido anterior da PoC de seleção de produtos com IA*\" : \"*Novo pedido iniciado na PoC de seleção de produtos com IA*\" }}\\n\\n{{ $('propagate isUpdating').item.json.isUpdating ? \"O que você já pediu:\\\\n\" + $json.body.products.map((it) => `*${it.amount}x* ${it.name} - R$ ${it.price} ${it.notes ? \"(\" + it.notes + \")\" : \"\"}`).join(\"\\\\n\") + \"\\\\n\\\\n\" : \"\" }}Segue o nosso cardápio!\\n\\n{{ $json.body.menu.map((it) => `${it.name} - R$ ${it.price}`).join(\"\\\\n\") }}\\n\\nPode digitar naturalmente, nosso atendente vai te entender. 😉\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        396,
+        -960
+      ],
+      "id": "8b555f1c-6fb9-4c57-9317-84aa5517a1f2",
+      "name": "menu listing",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "494f6447-076b-41d0-a3b4-3e5301bfb039",
+              "name": "isUpdating",
+              "value": "={{ $json.isUpdating }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        176,
+        -960
+      ],
+      "id": "01877b06-c3e8-4e82-9752-710ce060213f",
+      "name": "propagate isUpdating"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = '{{ $('propagate isUpdating').item.json.isUpdating ? \"updating_products\" : \"choosing_products\" }}' WHERE id = '{{ $('Webhook').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        616,
+        -960
+      ],
+      "id": "87b9f210-686d-4b31-a559-78dd217e94c2",
+      "name": "set next step",
+      "credentials": {
+        "mySql": {
+          "id": "FP6mVqY1Y3BEkBjb",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Pode validar se seu pedido está correto?\\n\\n{{ $json.body.parsedAIResponse.map((it) => `*${it.amount}x* ${it.name} - R$ ${it.price} ${it.notes ? \"(\" + it.notes + \")\" : \"\"}`).join(\"\\\\n\") }}\\n\\nSubtotal: R$ {{ $json.body.parsedAIResponse.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2) }}\",\n\"buttons\": {\n  \"rows\": [\n{ \"id\": \"1\", \"title\": \"✅ Está tudo certo\" },\n{ \"id\": \"2\", \"title\": \"✏️ Alterar o pedido\" }\n  ]\n}\n    }\n\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        616,
+        -710
+      ],
+      "id": "ab979f81-3efc-482e-a344-2e8c4192c5cc",
+      "name": "send order confirmation",
+      "credentials": {
+        "aws": {
+          "id": "X68QXgunzv1tww0B",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "just_started",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e7e737d2-56c8-4d64-8d5d-21bf5d1740c8",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "choosing_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c160bb75-cbed-45cb-9ede-ec6c70b68da2",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "=updating_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "235b62a7-b1e3-4462-a665-8c9700a69933",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "confirming_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -640,
+        -606
+      ],
+      "id": "afb530de-4369-454b-ad10-ba41a12c5e77",
+      "name": "start stage process"
+    }
+  ],
+  "pinData": {
+    "order timeout": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.copaerp.site",
+            "user-agent": "Go-http-client/2.0",
+            "content-length": "752",
+            "accept-encoding": "gzip",
+            "content-type": "application/json",
+            "x-forwarded-for": "75.101.182.181",
+            "x-forwarded-host": "n8n.copaerp.site",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "1893138af994",
+            "x-real-ip": "75.101.182.181"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "channel": "whatsapp",
+            "order_id": "264c21fd-88b9-48e7-b653-4a386fe0b2c8",
+            "type": "warn"
+          },
+          "webhookUrl": "https://n8n.copaerp.site/webhook/998ea582-5067-4362-b677-96c6f9991a7f",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "start stage process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "AWS Lambda",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AWS Lambda1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "order timeout": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parse AI response": {
+      "main": [
+        [
+          {
+            "node": "send order confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "parse AI response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL": {
+      "main": [
+        [
+          {
+            "node": "fixing json field before insert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fixing json field before insert": {
+      "main": [
+        [
+          {
+            "node": "MySQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set isUpdating to false": {
+      "main": [
+        [
+          {
+            "node": "propagate isUpdating",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set isUpdating to true": {
+      "main": [
+        [
+          {
+            "node": "propagate isUpdating",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert prompt": {
+      "main": [
+        [
+          {
+            "node": "AI Agent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check user confirmation": {
+      "main": [
+        [
+          {
+            "node": "order closing message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "set isUpdating to true",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "invalid response answer",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "order closing message": {
+      "main": [
+        [
+          {
+            "node": "close order",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "menu listing": {
+      "main": [
+        [
+          {
+            "node": "set next step",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "propagate isUpdating": {
+      "main": [
+        [
+          {
+            "node": "menu listing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send order confirmation": {
+      "main": [
+        [
+          {
+            "node": "MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "start stage process": {
+      "main": [
+        [
+          {
+            "node": "set isUpdating to false",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert prompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "update prompt",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check user confirmation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "cd4bba08-47cd-4925-adc3-2f633c216f5c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f0526099bf3cd1a6d436c1ecbc22664a6f103be1837a55e3c3fdc14fe02e33e6"
+  },
+  "id": "21MNPM5ASoICcnLc",
+  "tags": []
+}

@@ -1,0 +1,3948 @@
+{
+  "name": "orders",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "just_started",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e7e737d2-56c8-4d64-8d5d-21bf5d1740c8",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "choosing_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c160bb75-cbed-45cb-9ede-ec6c70b68da2",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "=updating_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "235b62a7-b1e3-4462-a665-8c9700a69933",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "confirming_products",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -128,
+        400
+      ],
+      "id": "dc96a095-10d2-43af-8592-599167682b7a",
+      "name": "start stage process",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bf32139d-ca1f-4d01-bc45-9d4809368fa9",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -4320,
+        3936
+      ],
+      "id": "c8d1b68e-9514-45ab-9d49-649b9865c544",
+      "name": "Webhook1",
+      "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "just_started",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "just_started"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e7e737d2-56c8-4d64-8d5d-21bf5d1740c8",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "starting_answer",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "starting_answer"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c160bb75-cbed-45cb-9ede-ec6c70b68da2",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "first_ordering",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "first_ordering"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "df3c0ef8-f6e0-4e28-b428-a6ec6068a238",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "late_ordering",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "late_ordering"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "235b62a7-b1e3-4462-a665-8c9700a69933",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "getting_open_time",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "getting_open_time"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "205bb113-046a-41c6-b8d6-3650dfd6c8ec",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "getting_address",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "getting_address"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "edd9dba6-2f8a-4bf2-97d6-d9be4ae48022",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "getting_human_help",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "getting_human_help"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fdafcff5-b3a7-472d-a486-5902dd46463b",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "order_checking",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "order_checking"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2c53f843-ad6e-4bea-b630-1f315cb3f119",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "order_checking_confirmation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "order_checking_confirmation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "9daa6627-bbca-4b7b-9630-e707cb5b2d5d",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "order_confirmation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "order_confirmation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "27bbc3a1-58af-4be8-b364-a63b39ea893f",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "cancel_confirmation",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "cancel_confirmation"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7a50ae19-b492-4224-8396-3b442de7ba39",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "choosing_delivery_method",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "choosing_delivery_method"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "77ba1ef3-bf13-4e55-9f5a-1335eed79a13",
+                    "leftValue": "={{ $json.body.order_status }}",
+                    "rightValue": "order_finishing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "order_finishing"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -3952,
+        3712
+      ],
+      "id": "e6c18556-0d6b-4dd2-ad19-1d3f52c4a453",
+      "name": "start stage process1",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'starting_answer' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1808,
+        1888
+      ],
+      "id": "cfb17a72-a2ea-49a6-8934-cd117d1c3ae1",
+      "name": "set next step1",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"👋 Olá! Bem-vindo à {{ $json.name }}\\nSou seu assistente virtual e posso te ajudar com o que precisar.\\nMe diga com o que posso te ajudar ou escolha uma opção:\\n1️⃣ Ver o cardápio e fazer um pedido\\n2️⃣ Consultar o horário de funcionamento\\n3️⃣ Ver o endereço\\n4️⃣ Falar com um atendente\\n5️⃣Acompanhar pedido em andamento\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -2032,
+        1888
+      ],
+      "id": "f03cddd4-439f-4f35-bb45-80d414eede91",
+      "name": "msg send",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $json.body.order_id }}\", \"message\": { \"main_text\":\n\"Ótimo! Aqui está o nosso cardápio:\\n\\n{{ $json.body.menu.map((it, i) => [...`${i+1}`].map(d => d + '\\uFE0F\\u20E3').join('') + ` ${it.name} - R$ ${it.price.replace('.',',')}`).join(\"\\\\n\") }}\\n\\nPode escrever seu pedido normalmente. Estou entendendo tudo! 😄\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        2208
+      ],
+      "id": "837937de-da77-45a4-9ea7-8f370296c83a",
+      "name": "msg send1",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT b.name from business b join unit u on b.id = u.business_id where u.id = '{{ $('Webhook1').item.json.body.unit_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -2336,
+        1888
+      ],
+      "id": "7602f6ef-1317-4877-b798-24f333fa1171",
+      "name": "get business name",
+      "alwaysOutputData": false,
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET finished_at = current_timestamp() WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -2400,
+        4096
+      ],
+      "id": "8142c32f-ff2a-4d86-b006-4bb8db5de830",
+      "name": "close order2",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'first_ordering' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1648,
+        2208
+      ],
+      "id": "de469b07-a4d3-4e6d-82ba-d4325b27171a",
+      "name": "set next step2",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "51fc66c3-67c3-4617-8b04-c8599213548c",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ed77f8f4-2013-4dac-9604-cd759c78ede9",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "4"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8ab7b2c7-23f2-4312-b0da-597e01355f92",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "5",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "5"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2320,
+        2672
+      ],
+      "id": "4aca2a36-8c04-49ef-b50b-ed372e858611",
+      "name": "starting_answer",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $json.body.order_id }}\", \"message\": { \"main_text\":\n\"🕒 *Estamos abertos todos os dias! *\\nFuncionamos de *segunda a domingo*, das *19h às 00h*.\\nQuer fazer seu pedido agora ou prefere voltar ao menu?\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"🍕 Fazer pedido\" },\n{ \"id\": \"2\", \"title\": \"🔙 Voltar ao menu\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        2400
+      ],
+      "id": "3e3fb415-666b-4caf-8803-047d619d3cb4",
+      "name": "msg send2",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'getting_open_time' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1648,
+        2400
+      ],
+      "id": "3f76f9ea-26d8-4c7e-ba20-0220aa07624f",
+      "name": "set next step3",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"📍 Estamos localizados na {{ $json.address }}.\\nVenha nos visitar! Estacionamento gratuito. 🚗\\nDeseja fazer um pedido agora?\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"🍕 Fazer pedido\" },\n{ \"id\": \"2\", \"title\": \"🔙 Voltar ao menu\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1648,
+        2608
+      ],
+      "id": "8246c598-a207-4ce3-a68b-b3952a605b1b",
+      "name": "msg send3",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'getting_address' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1440,
+        2608
+      ],
+      "id": "b0904b20-db97-46ef-8696-073e43955c77",
+      "name": "set next step4",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $json.body.order_id }}\", \"message\": { \"main_text\":\n\"🧑‍💬 *Precisa de uma ajudinha?*  Sem problemas! Um dos meus colegas pode te ajudar direto no WhatsApp.\\nÉ só me chamar no número: *(11) 99999-9999*\\n(Atendimento de segunda a domingo, das 19h às 00h)\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"💬 Chamar no WhatsApp\" },\n{ \"id\": \"2\", \"title\": \"🔙 Voltar ao menu\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        2800
+      ],
+      "id": "6c0f6ab4-d48b-472b-8f1f-417e7f0c0e35",
+      "name": "msg send4",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'getting_human_help' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1648,
+        2800
+      ],
+      "id": "bdbc749b-a676-4829-b18f-2ddf6d2e98af",
+      "name": "set next step5",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $json.body.order_id }}\", \"message\": { \"main_text\":\n\"Digite o número do seu pedido para visualizar o status 📦\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        3024
+      ],
+      "id": "64e124a0-d4c4-4e79-8154-4c7aa3db3b18",
+      "name": "msg send5",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'order_checking' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1648,
+        3024
+      ],
+      "id": "aeb72410-630a-4b12-af29-0195629427de",
+      "name": "set next step6",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $json.body.order_id }}\", \"message\": { \"main_text\":\n\"😅 Opa! Não entendi bem o que você quis dizer.\\nPor favor, escolha uma das opções abaixo ou me diga o que deseja:\\n1️⃣ Ver o cardápio e fazer um pedido\\n2️⃣ Consultar o horário de funcionamento\\n3️⃣ Ver o endereço\\n4️⃣ Falar com um atendente\\n5️⃣Acompanhar pedido em andamento\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1952,
+        3232
+      ],
+      "id": "dbaa3821-a90a-4a48-85be-20f604ebd75e",
+      "name": "msg send6",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "select concat(street_name, ', ', street_number, ' - ', neighborhood, ', ', city, '/', state) as address from unit where id = '{{ $('Webhook1').item.json.body.unit_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1952,
+        2608
+      ],
+      "id": "e3596ac3-863d-403e-b14c-f82a13f6cd49",
+      "name": "get address",
+      "alwaysOutputData": false,
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2800,
+        3760
+      ],
+      "id": "50064b39-f1cb-46a3-bd5a-b3568628491f",
+      "name": "router",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2800,
+        3936
+      ],
+      "id": "23149141-843d-4450-9490-a3faa00c0ee6",
+      "name": "router1",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2800,
+        4112
+      ],
+      "id": "64a4e6b6-84b1-4a94-bef9-e21e2fd55d1a",
+      "name": "router2",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"https://wa.me/11999999999\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -2560,
+        4096
+      ],
+      "id": "aabd6fc1-423d-48a5-b2b5-2a4877c69390",
+      "name": "msg send7",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"✅ Pedido #{{ $('Webhook1').item.json.body.message }} localizado!\\n📦 Status atual: A ser definido pelos analistas 🧠\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"🔙 Voltar ao menu\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1536,
+        4560
+      ],
+      "id": "d678e249-dfda-4530-b8b0-ab10a4556445",
+      "name": "msg send8",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'order_checking_confirmation' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -1312,
+        4752
+      ],
+      "id": "b97d3072-4d91-4a24-aa5d-f10ad9cfbbc7",
+      "name": "set next step7",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT finished_at, canceled_at from orders.order where id = '{{ $('Webhook1').item.json.body.message }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -2128,
+        4752
+      ],
+      "id": "5d92e2f1-610d-4e7d-9ff1-edb8543d6e46",
+      "name": "search order",
+      "alwaysOutputData": true,
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0003d376-dd2c-4943-856c-936f3c961c3e",
+              "leftValue": "={{ $('search order').item.json }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "9e842ecb-0d6d-46c3-a8cc-b8128b1d0b31",
+              "leftValue": "={{ $json.finished_at }}",
+              "rightValue": "={{ null }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "8332e64d-a966-45c4-a2b6-ae3dc22a2e8b",
+              "leftValue": "={{ $json.canceled_at }}",
+              "rightValue": "={{ null }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1840,
+        4752
+      ],
+      "id": "54a2f5e1-0f4e-42d7-8b26-a5508fdecb8a",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"O Pedido #{{ $('Webhook1').item.json.body.message }} *não* foi localizado\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"🔙 Voltar ao menu\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1536,
+        4752
+      ],
+      "id": "811f1365-6650-4450-819d-96076c8b8721",
+      "name": "msg send9",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        -2016,
+        3776
+      ],
+      "id": "5774f479-70c7-4a0f-ba24-5a0dcfe64a24",
+      "name": "AI Agent",
+      "retryOnFail": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-pro",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -1968,
+        4000
+      ],
+      "id": "1620f130-c238-41f7-bb51-e0fe12334bdc",
+      "name": "Google Gemini Chat Model"
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  var input = item.json.output\n  item.json.body = $('Webhook1').first().json.body\n  for (let i = 0; i < input.length; i++) {\n    for (const itemMenu of item.json.body.menu) {\n      if (input[i].id == itemMenu.id) {\n        input[i].price = itemMenu.price\n      }\n    }\n  }\n  item.json.body.parsedAIResponse = input\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1408,
+        3616
+      ],
+      "id": "647f6761-b3d1-46b6-afbc-1fc4fa1c0c0d",
+      "name": "parse AI response1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = \"order_confirmation\" WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -976,
+        3616
+      ],
+      "id": "bdd7fe5c-a4d3-4c2e-bb6b-296b2bb62a67",
+      "name": "MySQL2",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"array\",\n    \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"id\": {\n                \"type\": \"string\"\n            },\n            \"name\": {\n                \"type\": \"string\"\n            },\n            \"amount\": {\n                \"type\": \"integer\"\n            },\n            \"notes\": {\n                \"type\": [\n                    \"string\",\n                    null\n                ]\n            }\n        },\n        \"required\": [\n            \"id\",\n            \"name\",\n            \"amount\",\n            \"notes\"\n        ]\n    }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        -1856,
+        4000
+      ],
+      "id": "9e12594f-268d-4b32-9635-5e2e21a2b23f",
+      "name": "Structured Output Parser1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "40000e36-6e01-48fb-b178-f2422c6abf8d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1632,
+        3680
+      ],
+      "id": "b347ecf2-4135-4b5b-a57d-7859e156391a",
+      "name": "If3",
+      "alwaysOutputData": false,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET current_cart = '{{ JSON.stringify($json.output) }}' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -528,
+        3616
+      ],
+      "id": "4ab07bc6-6041-4787-92b4-e2cc86b2690a",
+      "name": "MySQL3",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const input = $('parse AI response1').first().json.body.parsedAIResponse\n  const resultArray = []\n  for (let i = 0; i < input.length; i++) {\n    const currentItem = input[i];\n    const jsonString = JSON.stringify(currentItem);\n    const sanitized = jsonString.replace(/'/g, \"''\");\n    resultArray.push(JSON.parse(sanitized));\n  }\n  item.json.output = resultArray\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -752,
+        3616
+      ],
+      "id": "aa96bbaa-9c81-4232-b2e7-6320b540d5c9",
+      "name": "fixing json field before insert1"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"🤔 Opa! Parece que não entendi direito o seu pedido.  Você pode tentar assim: \\\"Quero uma batata frita e um hamburguer com molho extra\\\"\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1408,
+        3856
+      ],
+      "id": "8f4aae8f-1c0b-4fd8-abfd-12263d968240",
+      "name": "error dump1",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que interpreta pedidos de clientes em linguagem natural e converte em uma lista estruturada de itens de um cardápio.\n\nO cardápio atual é:\n{{ $json.body.menu.map((it, i) => JSON.stringify({ id: it.id, number: i+1, name: it.name, })).join(\"\\n\") }}\n\nO usuário pode:\n- Adicionar novos itens ao pedido anterior\n- Alterar a quantidade ou detalhes de um item anterior\n- Remover algum item já pedido\n\nSempre retorne a **lista final** completa dos itens do pedido, já atualizada com as alterações solicitadas.\n\nRetorne o resultado em formato JSON com os seguintes campos:\n- id\n- name\n- amount\n- notes (Caso seja necessário, insira aqui observações sobre o produto)\n\nSe necessário, interprete quantidades e modificações mesmo que o cliente não use números diretamente (ex: \"mais um\", \"troque\", \"sem ketchup\", etc.).\n\nFrase do cliente: \"{{ $json.body.message }}\"\n\nItens do pedido anterior:\n{{ $json.body.products.map((it) => JSON.stringify(it)).join(\"\\n\") }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2352,
+        3872
+      ],
+      "id": "b76a7473-a238-4729-86fb-3abb26818ea0",
+      "name": "update prompt1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que converte pedidos de linguagem natural em itens de um cardápio. \nDado o seguinte cardápio:\n\n{{ $json.body.menu.map((it, i) => JSON.stringify({ id: it.id, number: i+1, name: it.name, })).join(\"\\n\") }}\n\nRetorne uma lista JSON com os itens mencionados na frase do usuário, contendo os campos:\n- id\n- name\n- amount\n- notes (caso seja necessário, insira aqui observações sobre o produto)\n\nFrase: \"{{ $json.body.message }}\"\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2352,
+        3648
+      ],
+      "id": "582b6309-1d20-4756-b66b-30a647e55b3d",
+      "name": "insert prompt1"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Ótimo! Aqui está o resumo do seu pedido:\\n{{ $json.body.parsedAIResponse.map((it) => `${it.amount} ${it.name} ${it.notes ?? \"\"}`).join(\"\\\\n\") }}\\n*💰 Total parcial*: R$ {{ $json.body.parsedAIResponse.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2).replace(\".\",\",\") }}\\nSe quiser, você ainda pode fazer ajustes no seu pedido — trocar sabores, adicionar ou remover itens.\\n🧾 Se preferir, também dá pra cancelar o pedido a qualquer momento — sem complicações.\\nFicou do jeitinho que você queria? Se sim, é só seguir para a finalização. Estamos quase lá! 🚀\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"✏️ Alterar pedido\" },\n{ \"id\": \"2\", \"title\": \"❌ Cancelar\" },\n{ \"id\": \"3\", \"title\": \"✅ Finalizar pedido\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1200,
+        3616
+      ],
+      "id": "ef2fe2c7-32ee-4ac0-b45e-d40bd623015d",
+      "name": "send order confirmation1",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "8f7556fb-539f-4580-8da8-34cd67447083",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "3",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "3"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1360,
+        5232
+      ],
+      "id": "3676cdaa-6117-40ac-956f-b71ca95b3a76",
+      "name": "router3",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'late_ordering' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -720,
+        4960
+      ],
+      "id": "8d48ec99-9dbc-4da1-b7e7-53d9ebbe26ba",
+      "name": "set next step8",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Novamente, aqui está o nosso cardápio:\\n\\n{{ $json.body.menu.map((it, i) => [...`${i+1}`].map(d => d + '\\uFE0F\\u20E3').join('') + ` ${it.name} - R$ ${it.price.replace('.',',')}`).join(\"\\\\n\") }}\\n\\nO que gostaria de fazer agora?\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1008,
+        4960
+      ],
+      "id": "cee8add8-e1a7-4937-85e2-3aab3316e911",
+      "name": "msg send10",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'cancel_confirmation' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -752,
+        5136
+      ],
+      "id": "29de7216-33ef-4ba1-b256-f08e5f22653b",
+      "name": "set next step9",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"⚠️ Você realmente quer cancelar seu pedido?\\nA gente entende, às vezes a fome muda de ideia. 😅\\nSe quiser, você ainda pode editar seu pedido em vez de cancelar tudo.\\nSe estiver certo mesmo, é só confirmar aqui embaixo.\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"🔙 Voltar\" },\n{ \"id\": \"2\", \"title\": \"❌Cancelar pedido\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1056,
+        5136
+      ],
+      "id": "6b486a72-b106-4f1b-8417-000d46b1e9d8",
+      "name": "msg send11",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'choosing_delivery_method' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -752,
+        5328
+      ],
+      "id": "a1af37fa-20f6-420b-89e4-1d2053798818",
+      "name": "set next step10",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"🚚 Como você prefere receber seu pedido?\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"Delivery\" },\n{ \"id\": \"2\", \"title\": \"Retirar no local\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1056,
+        5328
+      ],
+      "id": "ef099724-e64f-435c-b68e-c8b69b5f5578",
+      "name": "msg send12",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -2768,
+        5296
+      ],
+      "id": "d1b844f5-7620-4a76-a3cf-cf0ea6cffb1a",
+      "name": "router4",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET canceled_at = current_timestamp() WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -2176,
+        5296
+      ],
+      "id": "e0a8e10a-83df-45db-850e-29bda08ab2f6",
+      "name": "close order3",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"❌ Pedido cancelado com sucesso!  Tudo certo por aqui. Se mudar de ideia mais tarde, é só me chamar — vou estar por aqui pra te ajudar no que precisar. 😊\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        5296
+      ],
+      "id": "daa9bb8b-45c9-4603-8690-04917632ad8f",
+      "name": "msg send13",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Ótimo! Aqui está o resumo do seu pedido:\\n{{ $json.body.products.map((it) => `${it.amount} ${it.name} ${it.notes ?? \"\"}`).join(\"\\\\n\") }}\\n*💰 Total parcial*: R$ {{ $json.body.products.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2).replace(\".\",\",\") }}\\nSe quiser, você ainda pode fazer ajustes no seu pedido — trocar sabores, adicionar ou remover itens.\\n🧾 Se preferir, também dá pra cancelar o pedido a qualquer momento — sem complicações.\\nFicou do jeitinho que você queria? Se sim, é só seguir para a finalização. Estamos quase lá! 🚀\",\n\"buttons\": { \"rows\": [\n{ \"id\": \"1\", \"title\": \"✏️ Alterar pedido\" },\n{ \"id\": \"2\", \"title\": \"❌ Cancelar\" },\n{ \"id\": \"3\", \"title\": \"✅ Finalizar pedido\" }\n]}\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -2480,
+        5088
+      ],
+      "id": "8ca26401-d723-4c70-8b88-a29cb00925ca",
+      "name": "msg send14",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "1"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "285f2d45-de81-4ea9-9841-a3b1b26c7db2",
+                    "leftValue": "={{ $json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "2"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1056,
+        4368
+      ],
+      "id": "e50dab6f-adb6-4bf0-aacc-44d79abad27f",
+      "name": "router5",
+      "notesInFlow": false,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = 'order_finishing' WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -208,
+        4320
+      ],
+      "id": "bc38c1a8-f19f-4145-b547-a06f2e67baed",
+      "name": "set next step11",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Escreva aqui o seu endereço\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        4320
+      ],
+      "id": "03e51df7-a5b7-485c-a5fd-d9eac3019143",
+      "name": "msg send15",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET finished_at = current_timestamp() WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        0,
+        4512
+      ],
+      "id": "c3ad0052-6537-4f3e-b5fe-6299325864c4",
+      "name": "close order4",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"📍Número: {{ $json.body.order_id }}\\n📦 Pedido: {{ $json.body.products.map((it) => `${it.amount} ${it.name} ${it.notes ?? \"\"}`).join(\"\\\\n\") }}\\n💸 Total (com taxa): R$ {{ $json.body.products.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2).replace(\".\",\",\") }}\\n🚚 Modalidade: Retirada\\nEstamos finalizando a criação do seu pedido!\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        4512
+      ],
+      "id": "ff2f60c2-8a57-45e4-ba23-73e5063ee4a4",
+      "name": "msg send17",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Chegue aqui com o número do seu pedido!\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -496,
+        4512
+      ],
+      "id": "9a164ca8-a715-42ba-a845-324afad6cf90",
+      "name": "msg send16",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = \"order_confirmation\" WHERE id = '{{ $('Webhook1').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        -2240,
+        5088
+      ],
+      "id": "d8d4225d-4711-43c5-bfef-102fdceea809",
+      "name": "MySQL4",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "bf32139d-ca1f-4d01-bc45-9d4809368fa9",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -352,
+        432
+      ],
+      "id": "b3e5e602-6d82-4bec-9e08-4458c9e98916",
+      "name": "Webhook2",
+      "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Você ainda está por aí? Seu pedido será encerrado em breve.\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1056,
+        224
+      ],
+      "id": "72dc657e-881e-43a9-929d-0c3108be69c9",
+      "name": "AWS Lambda2",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "6a23f1da-7809-4d11-b570-11469f313961",
+              "leftValue": "={{ $json.body.type }}",
+              "rightValue": "warn",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1280,
+        320
+      ],
+      "id": "38082606-d128-4e07-8dd5-d87ec1f2111b",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Obrigado pelo contato, quando precisar é só chamar. Até mais!\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1056,
+        432
+      ],
+      "id": "9ad0b33b-3a09-44ac-8289-2f689974f14f",
+      "name": "AWS Lambda3",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "0e0f95f5-c30b-43e8-b52d-65dc1a1684ee",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -1488,
+        320
+      ],
+      "id": "c4348219-7b0d-4fd2-aada-272d08586cc8",
+      "name": "order timeout1",
+      "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
+    },
+    {
+      "parameters": {
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        304,
+        320
+      ],
+      "id": "a3a885e7-24f0-444d-aa29-0fe1f9150bc6",
+      "name": "AI Agent2",
+      "retryOnFail": true,
+      "disabled": true,
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "modelName": "models/gemini-2.5-flash-preview-04-17-thinking",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        320,
+        544
+      ],
+      "id": "1ba818af-f4e2-463e-a271-38505ed85a88",
+      "name": "Google Gemini Chat Model2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  var input = item.json.output\n  item.json.body = $('Webhook2').first().json.body\n  for (let i = 0; i < input.length; i++) {\n    for (const itemMenu of item.json.body.menu) {\n      if (input[i].id == itemMenu.id) {\n        input[i].price = itemMenu.price\n      }\n    }\n  }\n  item.json.body.parsedAIResponse = input\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        912,
+        304
+      ],
+      "id": "ca5aa28c-e79e-42d8-b31d-fdab1ac5d069",
+      "name": "parse AI response2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = \"confirming_products\" WHERE id = '{{ $('parse AI response').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1344,
+        304
+      ],
+      "id": "85456065-756e-4e6b-9941-8d8f786abea1",
+      "name": "MySQL5",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "schemaType": "manual",
+        "inputSchema": "{\n    \"type\": \"array\",\n    \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n            \"id\": {\n                \"type\": \"string\"\n            },\n            \"name\": {\n                \"type\": \"string\"\n            },\n            \"amount\": {\n                \"type\": \"integer\"\n            },\n            \"notes\": {\n                \"type\": [\n                    \"string\",\n                    null\n                ]\n            }\n        },\n        \"required\": [\n            \"id\",\n            \"name\",\n            \"amount\",\n            \"notes\"\n        ]\n    }\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.2,
+      "position": [
+        448,
+        544
+      ],
+      "id": "d9dd72cb-4a80-4964-9dc9-41324195a712",
+      "name": "Structured Output Parser2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "40000e36-6e01-48fb-b178-f2422c6abf8d",
+              "leftValue": "={{ $json.output }}",
+              "rightValue": "",
+              "operator": {
+                "type": "array",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        688,
+        352
+      ],
+      "id": "c9c8da18-e2bd-4e99-b9fb-2df00175538a",
+      "name": "If5",
+      "alwaysOutputData": false,
+      "notesInFlow": false,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "## Fluxo de finalização de conversa por timeout"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -1136,
+        112
+      ],
+      "id": "89f8979c-7f9d-482f-aed0-c6fbfa1c4109",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "## PoC de seleção de produtos"
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "da746178-1266-4962-ace8-d1fb8c771365",
+      "name": "Sticky Note3",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET current_cart = '{{ JSON.stringify($json.output) }}' WHERE id = '{{ $('parse AI response').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1792,
+        304
+      ],
+      "id": "2c2bdef8-3229-42bd-85e2-31c5fcfa382d",
+      "name": "MySQL6",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Loop over input items and add a new field called 'myNewField' to the JSON of each one\nfor (const item of $input.all()) {\n  const input = $('parse AI response2').first().json.body.parsedAIResponse\n  const resultArray = []\n  for (let i = 0; i < input.length; i++) {\n    const currentItem = input[i];\n    const jsonString = JSON.stringify(currentItem);\n    const sanitized = jsonString.replace(/'/g, \"''\");\n    resultArray.push(JSON.parse(sanitized));\n  }\n  item.json.output = resultArray\n}\n\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        304
+      ],
+      "id": "54d8def9-2631-4d03-8b3b-ede5da18e5f5",
+      "name": "fixing json field before insert2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "39a1b4c9-f0f7-4cfd-9557-fe4fde3f198d",
+              "name": "isUpdating",
+              "value": false,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        384,
+        48
+      ],
+      "id": "93e27c81-5352-440b-a53a-7db98a15a93f",
+      "name": "set isUpdating to false1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4cff6d21-0f0a-4da2-9da5-27478bab6e3e",
+              "name": "isUpdating",
+              "value": true,
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        384,
+        1008
+      ],
+      "id": "2c8446a8-8ec1-45a9-94f3-f3868fb1ed17",
+      "name": "set isUpdating to true1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $('insert prompt2').item.json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Desculpe, não consegui te entender. Tem certeza de que escolheu um produto do cardápio?\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        912,
+        528
+      ],
+      "id": "917c3e1c-9d3e-47e4-a093-f27cd5bb397c",
+      "name": "error dump2",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que interpreta pedidos de clientes em linguagem natural e converte em uma lista estruturada de itens de um cardápio.\n\nO cardápio atual é:\n{{ $json.body.menu.map((it) => JSON.stringify({ id: it.id, name: it.name, })).join(\"\\n\") }}\n\nO usuário pode:\n- Adicionar novos itens ao pedido anterior\n- Alterar a quantidade ou detalhes de um item anterior\n- Remover algum item já pedido\n\nSempre retorne a **lista final** completa dos itens do pedido, já atualizada com as alterações solicitadas.\n\nRetorne o resultado em formato JSON com os seguintes campos:\n- id\n- name\n- amount\n- notes (Caso seja necessário, insira aqui observações sobre o produto)\n\nSe necessário, interprete quantidades e modificações mesmo que o cliente não use números diretamente (ex: \"mais um\", \"troque\", \"sem ketchup\", etc.).\n\nFrase do cliente: \"{{ $json.body.message }}\"\n\nItens do pedido anterior:\n{{ $json.body.products.map((it) => JSON.stringify(it)).join(\"\\n\") }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        544
+      ],
+      "id": "0689e62c-15fd-48be-8af2-06d96dc93b76",
+      "name": "update prompt2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "650ad507-8c1c-4569-a38f-b1606e6a3084",
+              "name": "chatInput",
+              "value": "=Você é um assistente que converte pedidos de linguagem natural em itens de um cardápio. \nDado o seguinte cardápio:\n\n{{ $json.body.menu.map((it) => JSON.stringify({ id: it.id, name: it.name, })).join(\"\\n\") }}\n\nRetorne uma lista JSON com os itens mencionados na frase do usuário, contendo os campos:\n- id\n- name\n- amount\n- notes (caso seja necessário, insira aqui observações sobre o produto)\n\nFrase: \"{{ $json.body.message }}\"\n",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        80,
+        288
+      ],
+      "id": "4bbd0d06-0b47-4a9b-85d8-563fda8917d5",
+      "name": "insert prompt2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Webhook2').item.json.body.message }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "bc7dd4a9-d00b-4bfc-9e2a-adbc2c669d88"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Confirms"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b8c34068-cc36-47ea-a9ee-4b7d8e365876",
+                    "leftValue": "={{ $('Webhook2').item.json.body.message }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Wants to edit"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        80,
+        1008
+      ],
+      "id": "00577884-9258-488c-bccc-b881c6b8c210",
+      "name": "check user confirmation1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Pedido confirmado!\\n\\n*Finalização do pedido da PoC de IA*\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        384,
+        800
+      ],
+      "id": "cd8c19ee-0d2f-498e-ac01-fe5dbdb84c63",
+      "name": "order closing message1",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET finished_at = current_timestamp() WHERE id = '{{ $('Webhook').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        688,
+        800
+      ],
+      "id": "eb3c47e6-e744-4bdb-ae5e-fd50eb3afb88",
+      "name": "close order1",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $('Webhook2').item.json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Aperte um botão para selecionar uma opção\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        384,
+        1200
+      ],
+      "id": "4d1db438-be00-4f2e-bbf5-caaebfe8b086",
+      "name": "invalid response answer1",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"{{ $('propagate isUpdating1').item.json.isUpdating ? \"*Atualizando pedido anterior da PoC de seleção de produtos com IA*\" : \"*Novo pedido iniciado na PoC de seleção de produtos com IA*\" }}\\n\\n{{ $('propagate isUpdating1').item.json.isUpdating ? \"O que você já pediu:\\\\n\" + $json.body.products.map((it) => `*${it.amount}x* ${it.name} - R$ ${it.price} ${it.notes ? \"(\" + it.notes + \")\" : \"\"}`).join(\"\\\\n\") + \"\\\\n\\\\n\" : \"\" }}Segue o nosso cardápio!\\n\\n{{ $json.body.menu.map((it) => `${it.name} - R$ ${it.price}`).join(\"\\\\n\") }}\\n\\nPode digitar naturalmente, nosso atendente vai te entender. 😉\"\n}\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        912,
+        48
+      ],
+      "id": "f700f5e5-3995-4e90-8e67-6c53f32c270f",
+      "name": "menu listing1",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "494f6447-076b-41d0-a3b4-3e5301bfb039",
+              "name": "isUpdating",
+              "value": "={{ $json.isUpdating }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        688,
+        48
+      ],
+      "id": "9c74f311-ef72-4e25-aa6a-354d3e89a3f5",
+      "name": "propagate isUpdating1",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE `order` SET status = '{{ $('propagate isUpdating').item.json.isUpdating ? \"updating_products\" : \"choosing_products\" }}' WHERE id = '{{ $('Webhook').item.json.body.order_id }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.4,
+      "position": [
+        1120,
+        48
+      ],
+      "id": "8eed3a17-7735-4216-a330-7f12ead57a64",
+      "name": "set next step12",
+      "credentials": {
+        "mySql": {
+          "id": "ZfQ3zi3kCp56qosu",
+          "name": "MySQL account"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:390251560541:function:channel-dispatcher",
+        "payload": "={\n    \"order_id\": \"{{ $json.body.order_id }}\",\n    \"message\": {\n\"main_text\": \"Pode validar se seu pedido está correto?\\n\\n{{ $json.body.parsedAIResponse.map((it) => `*${it.amount}x* ${it.name} - R$ ${it.price} ${it.notes ? \"(\" + it.notes + \")\" : \"\"}`).join(\"\\\\n\") }}\\n\\nSubtotal: R$ {{ $json.body.parsedAIResponse.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2) }}\",\n\"buttons\": {\n  \"rows\": [\n{ \"id\": \"1\", \"title\": \"✅ Está tudo certo\" },\n{ \"id\": \"2\", \"title\": \"✏️ Alterar o pedido\" }\n  ]\n}\n    }\n\n}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        304
+      ],
+      "id": "89e455ea-d006-40f9-b658-0f5a385044f2",
+      "name": "send order confirmation2",
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      },
+      "disabled": true
+    }
+  ],
+  "pinData": {
+    "order timeout1": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.copaerp.site",
+            "user-agent": "Go-http-client/2.0",
+            "content-length": "752",
+            "accept-encoding": "gzip",
+            "content-type": "application/json",
+            "x-forwarded-for": "75.101.182.181",
+            "x-forwarded-host": "n8n.copaerp.site",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "1893138af994",
+            "x-real-ip": "75.101.182.181"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "channel": "whatsapp",
+            "order_id": "264c21fd-88b9-48e7-b653-4a386fe0b2c8",
+            "type": "warn"
+          },
+          "webhookUrl": "https://n8n.copaerp.site/webhook/998ea582-5067-4362-b677-96c6f9991a7f",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook2": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.copaerp.site",
+            "user-agent": "Go-http-client/2.0",
+            "content-length": "2845",
+            "accept-encoding": "gzip",
+            "content-type": "application/json",
+            "x-forwarded-for": "3.82.51.105",
+            "x-forwarded-host": "n8n.copaerp.site",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "1893138af994",
+            "x-real-ip": "3.82.51.105"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "customer_id": "6186b034-cb04-4f3b-a029-1ac716af6a84",
+            "menu": [
+              {
+                "category": "Lanches",
+                "description": "Pão, salsicha, purê de batata, milho, ervilha, batata palha e ketchup",
+                "id": "10d7adc1-2b24-40c3-a599-a7241a7e786e",
+                "index": "1",
+                "name": "Cachorro-Quente Tradicional",
+                "price": "14.50"
+              },
+              {
+                "category": "Bebidas",
+                "description": "Suco de laranja espremido na hora, sem conservantes",
+                "id": "1f363c55-34db-4dca-b586-fcbd5d7f8804",
+                "index": "2",
+                "name": "Suco Natural de Laranja",
+                "price": "8.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Tapioca leve e recheada com frango desfiado e requeijão cremoso",
+                "id": "2185006f-8489-4197-a640-dc0f6b0cc3b6",
+                "index": "3",
+                "name": "Tapioca de Frango com Requeijão",
+                "price": "12.00"
+              },
+              {
+                "category": "Sobremesas",
+                "description": "Brownie de chocolate meio amargo com bola de sorvete de creme e calda quente",
+                "id": "3c21b014-5ce0-4bbe-9431-2e5e5e17f7af",
+                "index": "4",
+                "name": "Brownie com Sorvete",
+                "price": "16.90"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Anéis empanados e fritos, sequinhos e crocantes",
+                "id": "3e95e6e1-db35-4e01-9472-f7092a43a0e9",
+                "index": "5",
+                "name": "Anéis de Cebola",
+                "price": "12.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Hambúrguer artesanal com queijo prato, bacon crocante e molho especial no pão brioche",
+                "id": "3f279d5d-5f64-43da-9ef7-538444d31a93",
+                "index": "6",
+                "name": "X-Burguer Clássico",
+                "price": "24.90"
+              },
+              {
+                "category": "Bebidas",
+                "description": "Coca-Cola, Guaraná ou Fanta – 350ml",
+                "id": "4eb15b99-05b6-4e3f-8109-14683b282692",
+                "index": "7",
+                "name": "Refrigerante Lata",
+                "price": "6.00"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Coxinhas crocantes com recheio de frango temperado, servidas com maionese da casa",
+                "id": "86bc8208-f84e-45fd-9eb1-0668b9f6a2c5",
+                "index": "8",
+                "name": "Mini Coxinhas de Frango",
+                "price": "13.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Pão australiano, hambúrguer, cheddar cremoso e cebola caramelizada",
+                "id": "a1ef019b-a724-45c3-a1ca-40e32f57a60a",
+                "index": "9",
+                "name": "Cheddar Melt",
+                "price": "22.00"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Batatas com casca, crocantes e levemente temperadas com ervas finas",
+                "id": "b6f4b6a2-5738-4f64-9054-bcdb9611326c",
+                "index": "10",
+                "name": "Porção de Batata Rústica",
+                "price": "14.00"
+              },
+              {
+                "category": "Sobremesas",
+                "description": "Milkshake cremoso de chocolate com pedaços crocantes de Ovomaltine",
+                "id": "c32f0f6d-2ddc-41f2-a605-c1bdc648ed0f",
+                "index": "11",
+                "name": "Milkshake de Ovomaltine",
+                "price": "17.90"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Nuggets empanados, servidos com molho barbecue",
+                "id": "ebae84d7-5051-4e8c-afc8-e2d2d5dea0ea",
+                "index": "12",
+                "name": "Porção de Nuggets de Frango",
+                "price": "13.50"
+              }
+            ],
+            "message": "2 porções de mini coxinhas de frango",
+            "order_id": "f1ae66cb-913d-4388-bf23-bce7d6cb25f8",
+            "order_last_message_at": "2025-06-24T23:00:22Z",
+            "order_status": "choosing_products",
+            "products": null,
+            "unit_id": "cc7a84b8-6a4d-42ff-bc37-efc00268ffd5"
+          },
+          "webhookUrl": "https://n8n.copaerp.site/webhook/bf32139d-ca1f-4d01-bc45-9d4809368fa9",
+          "executionMode": "production"
+        }
+      }
+    ],
+    "Webhook1": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.copaerp.site",
+            "user-agent": "Go-http-client/2.0",
+            "content-length": "2919",
+            "accept-encoding": "gzip",
+            "content-type": "application/json",
+            "x-forwarded-for": "44.197.242.150",
+            "x-forwarded-host": "n8n.copaerp.site",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "1893138af994",
+            "x-real-ip": "44.197.242.150"
+          },
+          "params": {},
+          "query": {},
+          "body": {
+            "customer_id": "6186b034-cb04-4f3b-a029-1ac716af6a84",
+            "menu": [
+              {
+                "category": "Lanches",
+                "description": "Pão, salsicha, purê de batata, milho, ervilha, batata palha e ketchup",
+                "id": "10d7adc1-2b24-40c3-a599-a7241a7e786e",
+                "index": "1",
+                "name": "Cachorro-Quente Tradicional",
+                "price": "14.50"
+              },
+              {
+                "category": "Bebidas",
+                "description": "Suco de laranja espremido na hora, sem conservantes",
+                "id": "1f363c55-34db-4dca-b586-fcbd5d7f8804",
+                "index": "2",
+                "name": "Suco Natural de Laranja",
+                "price": "8.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Tapioca leve e recheada com frango desfiado e requeijão cremoso",
+                "id": "2185006f-8489-4197-a640-dc0f6b0cc3b6",
+                "index": "3",
+                "name": "Tapioca de Frango com Requeijão",
+                "price": "12.00"
+              },
+              {
+                "category": "Sobremesas",
+                "description": "Brownie de chocolate meio amargo com bola de sorvete de creme e calda quente",
+                "id": "3c21b014-5ce0-4bbe-9431-2e5e5e17f7af",
+                "index": "4",
+                "name": "Brownie com Sorvete",
+                "price": "16.90"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Anéis empanados e fritos, sequinhos e crocantes",
+                "id": "3e95e6e1-db35-4e01-9472-f7092a43a0e9",
+                "index": "5",
+                "name": "Anéis de Cebola",
+                "price": "12.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Hambúrguer artesanal com queijo prato, bacon crocante e molho especial no pão brioche",
+                "id": "3f279d5d-5f64-43da-9ef7-538444d31a93",
+                "index": "6",
+                "name": "X-Burguer Clássico",
+                "price": "24.90"
+              },
+              {
+                "category": "Bebidas",
+                "description": "Coca-Cola, Guaraná ou Fanta – 350ml",
+                "id": "4eb15b99-05b6-4e3f-8109-14683b282692",
+                "index": "7",
+                "name": "Refrigerante Lata",
+                "price": "6.00"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Coxinhas crocantes com recheio de frango temperado, servidas com maionese da casa",
+                "id": "86bc8208-f84e-45fd-9eb1-0668b9f6a2c5",
+                "index": "8",
+                "name": "Mini Coxinhas de Frango",
+                "price": "13.00"
+              },
+              {
+                "category": "Lanches",
+                "description": "Pão australiano, hambúrguer, cheddar cremoso e cebola caramelizada",
+                "id": "a1ef019b-a724-45c3-a1ca-40e32f57a60a",
+                "index": "9",
+                "name": "Cheddar Melt",
+                "price": "22.00"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Batatas com casca, crocantes e levemente temperadas com ervas finas",
+                "id": "b6f4b6a2-5738-4f64-9054-bcdb9611326c",
+                "index": "10",
+                "name": "Porção de Batata Rústica",
+                "price": "14.00"
+              },
+              {
+                "category": "Sobremesas",
+                "description": "Milkshake cremoso de chocolate com pedaços crocantes de Ovomaltine",
+                "id": "c32f0f6d-2ddc-41f2-a605-c1bdc648ed0f",
+                "index": "11",
+                "name": "Milkshake de Ovomaltine",
+                "price": "17.90"
+              },
+              {
+                "category": "Acompanhamentos",
+                "description": "Nuggets empanados, servidos com molho barbecue",
+                "id": "ebae84d7-5051-4e8c-afc8-e2d2d5dea0ea",
+                "index": "12",
+                "name": "Porção de Nuggets de Frango",
+                "price": "13.50"
+              }
+            ],
+            "message": "1",
+            "order_id": "540de54d-4527-43ea-988c-636cd19acbf2",
+            "order_last_message_at": "2025-06-25T02:17:28Z",
+            "order_status": "cancel_confirmation",
+            "products": [
+              {
+                "id": "3e95e6e1-db35-4e01-9472-f7092a43a0e9",
+                "name": "Anéis de Cebola",
+                "notes": null,
+                "price": "12.00",
+                "amount": 1
+              }
+            ],
+            "unit_id": "cc7a84b8-6a4d-42ff-bc37-efc00268ffd5"
+          },
+          "webhookUrl": "https://n8n.copaerp.site/webhook/bf32139d-ca1f-4d01-bc45-9d4809368fa9",
+          "executionMode": "production"
+        }
+      }
+    ]
+  },
+  "connections": {
+    "start stage process": {
+      "main": [
+        [
+          {
+            "node": "set isUpdating to false1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert prompt2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "update prompt2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "check user confirmation1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "start stage process1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send": {
+      "main": [
+        [
+          {
+            "node": "set next step1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "start stage process1": {
+      "main": [
+        [
+          {
+            "node": "get business name",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "starting_answer",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "insert prompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "update prompt1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "search order",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get business name",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "router5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send1": {
+      "main": [
+        [
+          {
+            "node": "set next step2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get business name": {
+      "main": [
+        [
+          {
+            "node": "msg send",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "starting_answer": {
+      "main": [
+        [
+          {
+            "node": "msg send1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get address",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send2": {
+      "main": [
+        [
+          {
+            "node": "set next step3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send3": {
+      "main": [
+        [
+          {
+            "node": "set next step4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send4": {
+      "main": [
+        [
+          {
+            "node": "set next step5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send5": {
+      "main": [
+        [
+          {
+            "node": "set next step6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get address": {
+      "main": [
+        [
+          {
+            "node": "msg send3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router": {
+      "main": [
+        [
+          {
+            "node": "msg send1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get business name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router1": {
+      "main": [
+        [
+          {
+            "node": "msg send1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get business name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router2": {
+      "main": [
+        [
+          {
+            "node": "msg send7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get business name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send7": {
+      "main": [
+        [
+          {
+            "node": "close order2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send8": {
+      "main": [
+        [
+          {
+            "node": "set next step7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "search order": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "msg send8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send9": {
+      "main": [
+        [
+          {
+            "node": "set next step7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parse AI response1": {
+      "main": [
+        [
+          {
+            "node": "send order confirmation1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL2": {
+      "main": [
+        [
+          {
+            "node": "fixing json field before insert1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "parse AI response1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fixing json field before insert1": {
+      "main": [
+        [
+          {
+            "node": "MySQL3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update prompt1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert prompt1": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send order confirmation1": {
+      "main": [
+        [
+          {
+            "node": "MySQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send10": {
+      "main": [
+        [
+          {
+            "node": "set next step8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send11": {
+      "main": [
+        [
+          {
+            "node": "set next step9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send12": {
+      "main": [
+        [
+          {
+            "node": "set next step10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router3": {
+      "main": [
+        [
+          {
+            "node": "msg send10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send13": {
+      "main": [
+        [
+          {
+            "node": "close order3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router4": {
+      "main": [
+        [
+          {
+            "node": "msg send14",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send15": {
+      "main": [
+        [
+          {
+            "node": "set next step11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "router5": {
+      "main": [
+        [
+          {
+            "node": "msg send15",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "msg send16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send17": {
+      "main": [
+        [
+          {
+            "node": "close order4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send16": {
+      "main": [
+        [
+          {
+            "node": "msg send17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "msg send14": {
+      "main": [
+        [
+          {
+            "node": "MySQL4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook2": {
+      "main": [
+        [
+          {
+            "node": "start stage process",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "AWS Lambda2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AWS Lambda3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "order timeout1": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent2": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "parse AI response2": {
+      "main": [
+        [
+          {
+            "node": "send order confirmation2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MySQL5": {
+      "main": [
+        [
+          {
+            "node": "fixing json field before insert2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser2": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "parse AI response2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "error dump2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "fixing json field before insert2": {
+      "main": [
+        [
+          {
+            "node": "MySQL6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set isUpdating to false1": {
+      "main": [
+        [
+          {
+            "node": "propagate isUpdating1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "set isUpdating to true1": {
+      "main": [
+        [
+          {
+            "node": "propagate isUpdating1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update prompt2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "insert prompt2": {
+      "main": [
+        [
+          {
+            "node": "AI Agent2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "check user confirmation1": {
+      "main": [
+        [
+          {
+            "node": "order closing message1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "set isUpdating to true1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "invalid response answer1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "order closing message1": {
+      "main": [
+        [
+          {
+            "node": "close order1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "menu listing1": {
+      "main": [
+        [
+          {
+            "node": "set next step12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "propagate isUpdating1": {
+      "main": [
+        [
+          {
+            "node": "menu listing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "send order confirmation2": {
+      "main": [
+        [
+          {
+            "node": "MySQL5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "631f0d0b-d625-4305-a503-2607db6b5000",
+  "meta": {
+    "instanceId": "7201b7a93db9e3abe28a42613ca84e2655d19adbe27f2cdc95ed05631266c3bf"
+  },
+  "id": "ffBBScaquwVvu8Wk",
+  "tags": []
+}
