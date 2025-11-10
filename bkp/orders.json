@@ -103,10 +103,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -128,
-        400
+        -1104,
+        -4496
       ],
-      "id": "dc96a095-10d2-43af-8592-599167682b7a",
+      "id": "597baa20-d34a-4059-a1df-eccdc10c93a7",
       "name": "start stage process",
       "disabled": true
     },
@@ -119,10 +119,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -4320,
-        3936
+        -5296,
+        -960
       ],
-      "id": "c8d1b68e-9514-45ab-9d49-649b9865c544",
+      "id": "5a93303b-6211-4188-bd1e-54c3be84dcd2",
       "name": "Webhook1",
       "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
     },
@@ -461,10 +461,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -3952,
-        3712
+        -4928,
+        -1184
       ],
-      "id": "e6c18556-0d6b-4dd2-ad19-1d3f52c4a453",
+      "id": "7018a3b5-aa70-4370-9788-5405c4a84490",
       "name": "start stage process1",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -478,10 +478,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1808,
-        1888
+        -2784,
+        -3008
       ],
-      "id": "cfb17a72-a2ea-49a6-8934-cd117d1c3ae1",
+      "id": "233f0a4e-4bb2-4088-b730-40ddf906baea",
       "name": "set next step1",
       "credentials": {
         "mySql": {
@@ -498,10 +498,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -2032,
-        1888
+        -3008,
+        -3008
       ],
-      "id": "f03cddd4-439f-4f35-bb45-80d414eede91",
+      "id": "8b58dc55-3c74-48f2-b61a-d1714bab4c8e",
       "name": "msg send",
       "alwaysOutputData": false,
       "credentials": {
@@ -519,10 +519,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1952,
-        2208
+        -2928,
+        -2688
       ],
-      "id": "837937de-da77-45a4-9ea7-8f370296c83a",
+      "id": "e53bdde2-b142-44ba-94a3-707929acdf8e",
       "name": "msg send1",
       "alwaysOutputData": false,
       "credentials": {
@@ -541,10 +541,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -2336,
-        1888
+        -3312,
+        -3008
       ],
-      "id": "7602f6ef-1317-4877-b798-24f333fa1171",
+      "id": "67850cb5-eca8-4f5c-8003-ad7f02556831",
       "name": "get business name",
       "alwaysOutputData": false,
       "credentials": {
@@ -563,10 +563,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -2400,
-        4096
+        -3376,
+        -800
       ],
-      "id": "8142c32f-ff2a-4d86-b006-4bb8db5de830",
+      "id": "2a5daaa3-168c-4317-a69b-8f61ad832583",
       "name": "close order2",
       "credentials": {
         "mySql": {
@@ -584,10 +584,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1648,
-        2208
+        -2624,
+        -2688
       ],
-      "id": "de469b07-a4d3-4e6d-82ba-d4325b27171a",
+      "id": "093c08b7-3476-444c-a692-3aa1e4bf10a3",
       "name": "set next step2",
       "credentials": {
         "mySql": {
@@ -733,10 +733,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2320,
-        2672
+        -3296,
+        -2224
       ],
-      "id": "4aca2a36-8c04-49ef-b50b-ed372e858611",
+      "id": "12ce6bfb-f218-47a8-89de-225344ee1de2",
       "name": "starting_answer",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -749,10 +749,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1952,
-        2400
+        -2928,
+        -2496
       ],
-      "id": "3e3fb415-666b-4caf-8803-047d619d3cb4",
+      "id": "f97baf36-303d-435f-8251-f12108de1184",
       "name": "msg send2",
       "alwaysOutputData": false,
       "credentials": {
@@ -771,10 +771,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1648,
-        2400
+        -2624,
+        -2496
       ],
-      "id": "3f76f9ea-26d8-4c7e-ba20-0220aa07624f",
+      "id": "a9813622-7b6c-469f-9943-f8e8ba89396b",
       "name": "set next step3",
       "credentials": {
         "mySql": {
@@ -791,10 +791,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1648,
-        2608
+        -2624,
+        -2288
       ],
-      "id": "8246c598-a207-4ce3-a68b-b3952a605b1b",
+      "id": "0684838b-ab10-4595-ba1c-42ca7281e8ca",
       "name": "msg send3",
       "alwaysOutputData": false,
       "credentials": {
@@ -813,10 +813,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1440,
-        2608
+        -2416,
+        -2288
       ],
-      "id": "b0904b20-db97-46ef-8696-073e43955c77",
+      "id": "990c6fe5-6a8e-4a6a-afb1-4510f0fa354c",
       "name": "set next step4",
       "credentials": {
         "mySql": {
@@ -833,10 +833,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1952,
-        2800
+        -2928,
+        -2096
       ],
-      "id": "6c0f6ab4-d48b-472b-8f1f-417e7f0c0e35",
+      "id": "36564185-7e63-4b9e-b611-08a9bb96798c",
       "name": "msg send4",
       "alwaysOutputData": false,
       "credentials": {
@@ -855,10 +855,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1648,
-        2800
+        -2624,
+        -2096
       ],
-      "id": "bdbc749b-a676-4829-b18f-2ddf6d2e98af",
+      "id": "07f2b25a-2653-432c-a8e9-2c8df013abf3",
       "name": "set next step5",
       "credentials": {
         "mySql": {
@@ -875,10 +875,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1952,
-        3024
+        -2928,
+        -1872
       ],
-      "id": "64e124a0-d4c4-4e79-8154-4c7aa3db3b18",
+      "id": "d3bdc1e6-6d9b-45f1-84a6-83b807bf3fef",
       "name": "msg send5",
       "alwaysOutputData": false,
       "credentials": {
@@ -897,10 +897,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1648,
-        3024
+        -2624,
+        -1872
       ],
-      "id": "aeb72410-630a-4b12-af29-0195629427de",
+      "id": "a41b12fd-089e-460b-864a-50de7beea758",
       "name": "set next step6",
       "credentials": {
         "mySql": {
@@ -917,10 +917,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1952,
-        3232
+        -2928,
+        -1664
       ],
-      "id": "dbaa3821-a90a-4a48-85be-20f604ebd75e",
+      "id": "57b00888-727f-4678-ae47-ad0a5f20eff4",
       "name": "msg send6",
       "alwaysOutputData": false,
       "credentials": {
@@ -939,10 +939,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1952,
-        2608
+        -2928,
+        -2288
       ],
-      "id": "e3596ac3-863d-403e-b14c-f82a13f6cd49",
+      "id": "48c2b4fd-fde3-4b45-94c3-7f0579a31e04",
       "name": "get address",
       "alwaysOutputData": false,
       "credentials": {
@@ -1012,10 +1012,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2800,
-        3760
+        -3776,
+        -1136
       ],
-      "id": "50064b39-f1cb-46a3-bd5a-b3568628491f",
+      "id": "f11b9f56-afdf-4650-986f-37ec6c6a2a5a",
       "name": "router",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1080,10 +1080,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2800,
-        3936
+        -3776,
+        -960
       ],
-      "id": "23149141-843d-4450-9490-a3faa00c0ee6",
+      "id": "2fa87840-2507-4997-a70b-0e257a3d804e",
       "name": "router1",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1148,10 +1148,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2800,
-        4112
+        -3776,
+        -784
       ],
-      "id": "64a4e6b6-84b1-4a94-bef9-e21e2fd55d1a",
+      "id": "9c869635-0c6f-45a1-9267-69cf26d652a4",
       "name": "router2",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1164,10 +1164,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -2560,
-        4096
+        -3536,
+        -800
       ],
-      "id": "aabd6fc1-423d-48a5-b2b5-2a4877c69390",
+      "id": "bcee7e03-efed-4e05-ad4c-d8a12922c7bb",
       "name": "msg send7",
       "alwaysOutputData": false,
       "credentials": {
@@ -1185,10 +1185,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1536,
-        4560
+        -2512,
+        -336
       ],
-      "id": "d678e249-dfda-4530-b8b0-ab10a4556445",
+      "id": "d8bc39e1-4abc-4854-93ac-0ba1e797dc2b",
       "name": "msg send8",
       "alwaysOutputData": false,
       "credentials": {
@@ -1207,10 +1207,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -1312,
-        4752
+        -2288,
+        -144
       ],
-      "id": "b97d3072-4d91-4a24-aa5d-f10ad9cfbbc7",
+      "id": "2dfce640-cae2-4894-b542-f2fc1cb57ca0",
       "name": "set next step7",
       "credentials": {
         "mySql": {
@@ -1228,10 +1228,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -2128,
-        4752
+        -3104,
+        -144
       ],
-      "id": "5d92e2f1-610d-4e7d-9ff1-edb8543d6e46",
+      "id": "f79a3530-e5f3-4150-81d6-47d95c4ae3e8",
       "name": "search order",
       "alwaysOutputData": true,
       "credentials": {
@@ -1289,10 +1289,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1840,
-        4752
+        -2816,
+        -144
       ],
-      "id": "54a2f5e1-0f4e-42d7-8b26-a5508fdecb8a",
+      "id": "c40c40b5-c5f3-4689-9d25-b42fc732fb62",
       "name": "If2"
     },
     {
@@ -1303,10 +1303,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1536,
-        4752
+        -2512,
+        -144
       ],
-      "id": "811f1365-6650-4450-819d-96076c8b8721",
+      "id": "b45fde9e-baf3-4c53-82a3-3b7ee0d2446b",
       "name": "msg send9",
       "alwaysOutputData": false,
       "credentials": {
@@ -1324,10 +1324,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        -2016,
-        3776
+        -2992,
+        -1120
       ],
-      "id": "5774f479-70c7-4a0f-ba24-5a0dcfe64a24",
+      "id": "237f668a-53c5-44ab-b486-eb5c180f5ab2",
       "name": "AI Agent",
       "retryOnFail": true,
       "onError": "continueErrorOutput"
@@ -1340,11 +1340,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -1968,
-        4000
+        -2944,
+        -896
       ],
-      "id": "1620f130-c238-41f7-bb51-e0fe12334bdc",
-      "name": "Google Gemini Chat Model"
+      "id": "16ea81fa-ddde-43e4-a9e7-3f76d27ec5d8",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "CBVu4Lx7eWRXjPqd",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1353,10 +1359,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1408,
-        3616
+        -2384,
+        -1280
       ],
-      "id": "647f6761-b3d1-46b6-afbc-1fc4fa1c0c0d",
+      "id": "1738143c-78f8-4311-92ed-00487f1d8c76",
       "name": "parse AI response1"
     },
     {
@@ -1368,10 +1374,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -976,
-        3616
+        -1952,
+        -1280
       ],
-      "id": "bdd7fe5c-a4d3-4c2e-bb6b-296b2bb62a67",
+      "id": "5f93de0f-55f3-4133-8596-a86c731ea6ed",
       "name": "MySQL2",
       "credentials": {
         "mySql": {
@@ -1388,10 +1394,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        -1856,
-        4000
+        -2832,
+        -896
       ],
-      "id": "9e12594f-268d-4b32-9635-5e2e21a2b23f",
+      "id": "40807539-77e9-4e63-88fc-aba3a589a895",
       "name": "Structured Output Parser1"
     },
     {
@@ -1422,10 +1428,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1632,
-        3680
+        -2608,
+        -1216
       ],
-      "id": "b347ecf2-4135-4b5b-a57d-7859e156391a",
+      "id": "a273d7de-4ab8-48b0-8032-899e8e88acab",
       "name": "If3",
       "alwaysOutputData": false,
       "notesInFlow": false
@@ -1439,10 +1445,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -528,
-        3616
+        -1504,
+        -1280
       ],
-      "id": "4ab07bc6-6041-4787-92b4-e2cc86b2690a",
+      "id": "f39b9a8e-dda3-40a1-b1b6-67eb867a6e92",
       "name": "MySQL3",
       "credentials": {
         "mySql": {
@@ -1458,10 +1464,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -752,
-        3616
+        -1728,
+        -1280
       ],
-      "id": "aa96bbaa-9c81-4232-b2e7-6320b540d5c9",
+      "id": "6e1d6016-a74c-415b-a2cf-6cd48c332581",
       "name": "fixing json field before insert1"
     },
     {
@@ -1472,10 +1478,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1408,
-        3856
+        -2384,
+        -1040
       ],
-      "id": "8f4aae8f-1c0b-4fd8-abfd-12263d968240",
+      "id": "b5455a9f-7366-4c2b-9d73-c0877fd26acd",
       "name": "error dump1",
       "credentials": {
         "aws": {
@@ -1502,10 +1508,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2352,
-        3872
+        -3328,
+        -1024
       ],
-      "id": "b76a7473-a238-4729-86fb-3abb26818ea0",
+      "id": "82a73e83-a4cc-4dd7-bc32-40a74eb13fcc",
       "name": "update prompt1"
     },
     {
@@ -1526,10 +1532,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2352,
-        3648
+        -3328,
+        -1248
       ],
-      "id": "582b6309-1d20-4756-b66b-30a647e55b3d",
+      "id": "ad9b5582-26e2-4bfb-839c-821c364884e6",
       "name": "insert prompt1"
     },
     {
@@ -1540,10 +1546,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1200,
-        3616
+        -2176,
+        -1280
       ],
-      "id": "ef2fe2c7-32ee-4ac0-b45e-d40bd623015d",
+      "id": "d24050bf-1c2c-42bd-b88b-eadd9c0093c5",
       "name": "send order confirmation1",
       "credentials": {
         "aws": {
@@ -1637,10 +1643,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1360,
-        5232
+        -2336,
+        352
       ],
-      "id": "3676cdaa-6117-40ac-956f-b71ca95b3a76",
+      "id": "394d945e-26fc-44f6-9da4-9995cbfdff6e",
       "name": "router3",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1654,10 +1660,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -720,
-        4960
+        -1696,
+        80
       ],
-      "id": "8d48ec99-9dbc-4da1-b7e7-53d9ebbe26ba",
+      "id": "2eb917d9-4384-4418-9891-ab7dc686d687",
       "name": "set next step8",
       "credentials": {
         "mySql": {
@@ -1674,10 +1680,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1008,
-        4960
+        -1984,
+        80
       ],
-      "id": "cee8add8-e1a7-4937-85e2-3aab3316e911",
+      "id": "d75c01c4-96e7-4c83-991b-cbb3703d4cd6",
       "name": "msg send10",
       "alwaysOutputData": false,
       "credentials": {
@@ -1696,10 +1702,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -752,
-        5136
+        -1728,
+        256
       ],
-      "id": "29de7216-33ef-4ba1-b256-f08e5f22653b",
+      "id": "15493f4f-5323-48a8-909f-4e8472892746",
       "name": "set next step9",
       "credentials": {
         "mySql": {
@@ -1716,10 +1722,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1056,
-        5136
+        -2032,
+        256
       ],
-      "id": "6b486a72-b106-4f1b-8417-000d46b1e9d8",
+      "id": "599a2483-3e03-4027-b73d-c423c559f277",
       "name": "msg send11",
       "alwaysOutputData": false,
       "credentials": {
@@ -1738,10 +1744,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -752,
-        5328
+        -1728,
+        448
       ],
-      "id": "a1af37fa-20f6-420b-89e4-1d2053798818",
+      "id": "bffc8a0a-3cef-493b-af94-180b5ac4d979",
       "name": "set next step10",
       "credentials": {
         "mySql": {
@@ -1758,10 +1764,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1056,
-        5328
+        -2032,
+        448
       ],
-      "id": "ef099724-e64f-435c-b68e-c8b69b5f5578",
+      "id": "1b165bd5-2458-4164-ac43-a504c74cc1a0",
       "name": "msg send12",
       "alwaysOutputData": false,
       "credentials": {
@@ -1831,10 +1837,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -2768,
-        5296
+        -3744,
+        416
       ],
-      "id": "d1b844f5-7620-4a76-a3cf-cf0ea6cffb1a",
+      "id": "4e224e7f-16dd-44f2-8e5d-16fa70366060",
       "name": "router4",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1848,10 +1854,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -2176,
-        5296
+        -3152,
+        416
       ],
-      "id": "e0a8e10a-83df-45db-850e-29bda08ab2f6",
+      "id": "638d7b21-8fd3-483b-ae8d-67c98237a0a3",
       "name": "close order3",
       "credentials": {
         "mySql": {
@@ -1868,10 +1874,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -2480,
-        5296
+        -3456,
+        416
       ],
-      "id": "daa9bb8b-45c9-4603-8690-04917632ad8f",
+      "id": "9311295e-c4fa-4b1a-9d54-f20365ce4783",
       "name": "msg send13",
       "alwaysOutputData": false,
       "credentials": {
@@ -1889,10 +1895,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -2480,
-        5088
+        -3456,
+        208
       ],
-      "id": "8ca26401-d723-4c70-8b88-a29cb00925ca",
+      "id": "7c1497c8-da2d-4c34-9afa-81fe75348796",
       "name": "msg send14",
       "alwaysOutputData": false,
       "credentials": {
@@ -1962,10 +1968,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        -1056,
-        4368
+        -2032,
+        -528
       ],
-      "id": "e50dab6f-adb6-4bf0-aacc-44d79abad27f",
+      "id": "1fc95f1e-8347-4d53-8f77-72c7cfeb1e81",
       "name": "router5",
       "notesInFlow": false,
       "alwaysOutputData": false
@@ -1979,10 +1985,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -208,
-        4320
+        -1184,
+        -576
       ],
-      "id": "bc38c1a8-f19f-4145-b547-a06f2e67baed",
+      "id": "8e9636cf-a5d9-41dc-bcc4-90a691d394f7",
       "name": "set next step11",
       "credentials": {
         "mySql": {
@@ -1999,10 +2005,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -496,
-        4320
+        -1472,
+        -576
       ],
-      "id": "03e51df7-a5b7-485c-a5fd-d9eac3019143",
+      "id": "9036e899-c669-4997-aea7-24595e2600af",
       "name": "msg send15",
       "alwaysOutputData": false,
       "credentials": {
@@ -2021,10 +2027,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        0,
-        4512
+        -976,
+        -384
       ],
-      "id": "c3ad0052-6537-4f3e-b5fe-6299325864c4",
+      "id": "9e80a268-4456-4f8e-ba5e-481bf14080d6",
       "name": "close order4",
       "credentials": {
         "mySql": {
@@ -2036,36 +2042,15 @@
     {
       "parameters": {
         "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
-        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"📍Número: {{ $json.body.order_id }}\\n📦 Pedido: {{ $json.body.products.map((it) => `${it.amount} ${it.name} ${it.notes ?? \"\"}`).join(\"\\\\n\") }}\\n💸 Total (com taxa): R$ {{ $json.body.products.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2).replace(\".\",\",\") }}\\n🚚 Modalidade: Retirada\\nEstamos finalizando a criação do seu pedido!\"\n}}"
-      },
-      "type": "n8n-nodes-base.awsLambda",
-      "typeVersion": 1,
-      "position": [
-        -208,
-        4512
-      ],
-      "id": "ff2f60c2-8a57-45e4-ba23-73e5063ee4a4",
-      "name": "msg send17",
-      "alwaysOutputData": false,
-      "credentials": {
-        "aws": {
-          "id": "GUrlqaypJqA4TddA",
-          "name": "AWS account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
         "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"Chegue aqui com o número do seu pedido!\"\n}}"
       },
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -496,
-        4512
+        -1472,
+        -384
       ],
-      "id": "9a164ca8-a715-42ba-a845-324afad6cf90",
+      "id": "2845cae7-5006-46ce-bcb0-2ab296136344",
       "name": "msg send16",
       "alwaysOutputData": false,
       "credentials": {
@@ -2084,10 +2069,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        -2240,
-        5088
+        -3216,
+        208
       ],
-      "id": "d8d4225d-4711-43c5-bfef-102fdceea809",
+      "id": "93658b4b-aeb4-4159-ab43-39f763fbd521",
       "name": "MySQL4",
       "credentials": {
         "mySql": {
@@ -2105,10 +2090,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -352,
-        432
+        -1328,
+        -4464
       ],
-      "id": "b3e5e602-6d82-4bec-9e08-4458c9e98916",
+      "id": "a4858f2c-6f2c-4428-96af-efc8a437dbad",
       "name": "Webhook2",
       "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f",
       "disabled": true
@@ -2121,10 +2106,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1056,
-        224
+        -2032,
+        -4672
       ],
-      "id": "72dc657e-881e-43a9-929d-0c3108be69c9",
+      "id": "c1aefa1d-8f29-42c1-ac47-9f2b6b889701",
       "name": "AWS Lambda2",
       "credentials": {
         "aws": {
@@ -2160,10 +2145,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1280,
-        320
+        -2256,
+        -4576
       ],
-      "id": "38082606-d128-4e07-8dd5-d87ec1f2111b",
+      "id": "9de7665b-c8d0-4282-8724-b45d7774276e",
       "name": "If4"
     },
     {
@@ -2174,10 +2159,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        -1056,
-        432
+        -2032,
+        -4464
       ],
-      "id": "9ad0b33b-3a09-44ac-8289-2f689974f14f",
+      "id": "6b450d18-6aa4-46a5-b40a-7f23619c86ab",
       "name": "AWS Lambda3",
       "credentials": {
         "aws": {
@@ -2195,10 +2180,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        -1488,
-        320
+        -2464,
+        -4576
       ],
-      "id": "c4348219-7b0d-4fd2-aada-272d08586cc8",
+      "id": "5bb99005-81f2-4679-9041-7de491eb2bc9",
       "name": "order timeout1",
       "webhookId": "998ea582-5067-4362-b677-96c6f9991a7f"
     },
@@ -2210,10 +2195,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        304,
-        320
+        -672,
+        -4576
       ],
-      "id": "a3a885e7-24f0-444d-aa29-0fe1f9150bc6",
+      "id": "f430a215-6d22-490b-a039-b3ac512b305a",
       "name": "AI Agent2",
       "retryOnFail": true,
       "disabled": true,
@@ -2227,11 +2212,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        320,
-        544
+        -656,
+        -4352
       ],
-      "id": "1ba818af-f4e2-463e-a271-38505ed85a88",
+      "id": "c5d16083-0b61-4ecb-9a4c-fdb7da41b3a8",
       "name": "Google Gemini Chat Model2",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "CBVu4Lx7eWRXjPqd",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
       "disabled": true
     },
     {
@@ -2241,10 +2232,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        912,
-        304
+        -64,
+        -4592
       ],
-      "id": "ca5aa28c-e79e-42d8-b31d-fdab1ac5d069",
+      "id": "683dfae0-178c-49cb-9587-c11e00b43849",
       "name": "parse AI response2",
       "disabled": true
     },
@@ -2257,10 +2248,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        1344,
-        304
+        384,
+        -4592
       ],
-      "id": "85456065-756e-4e6b-9941-8d8f786abea1",
+      "id": "bb1980b6-f6cb-48a7-b484-9e270fdae24f",
       "name": "MySQL5",
       "credentials": {
         "mySql": {
@@ -2278,10 +2269,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
       "position": [
-        448,
-        544
+        -528,
+        -4352
       ],
-      "id": "d9dd72cb-4a80-4964-9dc9-41324195a712",
+      "id": "3e9bdaca-446e-4f7a-a941-1e27eaf64a51",
       "name": "Structured Output Parser2",
       "disabled": true
     },
@@ -2313,10 +2304,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        688,
-        352
+        -288,
+        -4544
       ],
-      "id": "c9c8da18-e2bd-4e99-b9fb-2df00175538a",
+      "id": "0645cee8-66df-49f5-a050-3e3743524a54",
       "name": "If5",
       "alwaysOutputData": false,
       "notesInFlow": false,
@@ -2329,10 +2320,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1136,
-        112
+        -2112,
+        -4784
       ],
-      "id": "89f8979c-7f9d-482f-aed0-c6fbfa1c4109",
+      "id": "eae1bc4d-d101-4c86-a9cd-58f0ad5ec358",
       "name": "Sticky Note2"
     },
     {
@@ -2342,10 +2333,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        0,
-        0
+        -976,
+        -4896
       ],
-      "id": "da746178-1266-4962-ace8-d1fb8c771365",
+      "id": "301a564c-2a32-4520-bfed-2911f89c00d8",
       "name": "Sticky Note3",
       "disabled": true
     },
@@ -2358,10 +2349,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        1792,
-        304
+        832,
+        -4592
       ],
-      "id": "2c2bdef8-3229-42bd-85e2-31c5fcfa382d",
+      "id": "a133759a-2704-4e6b-9d81-a36aaa4f493a",
       "name": "MySQL6",
       "credentials": {
         "mySql": {
@@ -2378,10 +2369,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1568,
-        304
+        608,
+        -4592
       ],
-      "id": "54d8def9-2631-4d03-8b3b-ede5da18e5f5",
+      "id": "cf90015b-99bd-4647-9465-60ded220380b",
       "name": "fixing json field before insert2",
       "disabled": true
     },
@@ -2403,10 +2394,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        384,
-        48
+        -592,
+        -4848
       ],
-      "id": "93e27c81-5352-440b-a53a-7db98a15a93f",
+      "id": "1655703f-e192-4115-9fc6-e31bee26630a",
       "name": "set isUpdating to false1",
       "disabled": true
     },
@@ -2428,10 +2419,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        384,
-        1008
+        -592,
+        -3888
       ],
-      "id": "2c8446a8-8ec1-45a9-94f3-f3868fb1ed17",
+      "id": "1cf0e5e0-2f11-4555-9143-b96a6f4b4afc",
       "name": "set isUpdating to true1",
       "disabled": true
     },
@@ -2443,10 +2434,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        912,
-        528
+        -64,
+        -4368
       ],
-      "id": "917c3e1c-9d3e-47e4-a093-f27cd5bb397c",
+      "id": "ba0643fd-a880-4f57-816f-2ca8f3dd5b07",
       "name": "error dump2",
       "credentials": {
         "aws": {
@@ -2474,10 +2465,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        80,
-        544
+        -896,
+        -4352
       ],
-      "id": "0689e62c-15fd-48be-8af2-06d96dc93b76",
+      "id": "9527bfd9-c70e-49e0-a82e-ca9148682268",
       "name": "update prompt2",
       "disabled": true
     },
@@ -2499,10 +2490,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        80,
-        288
+        -896,
+        -4608
       ],
-      "id": "4bbd0d06-0b47-4a9b-85d8-563fda8917d5",
+      "id": "f6e1a788-89c2-4e22-babf-3788bb9a3fa7",
       "name": "insert prompt2",
       "disabled": true
     },
@@ -2568,10 +2559,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.2,
       "position": [
-        80,
-        1008
+        -896,
+        -3888
       ],
-      "id": "00577884-9258-488c-bccc-b881c6b8c210",
+      "id": "ee67c9cb-e7b8-4abe-aef9-c056cb80dd9e",
       "name": "check user confirmation1",
       "disabled": true
     },
@@ -2583,10 +2574,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        384,
-        800
+        -592,
+        -4096
       ],
-      "id": "cd8c19ee-0d2f-498e-ac01-fe5dbdb84c63",
+      "id": "5e081481-8271-4c36-9ac4-24905422232f",
       "name": "order closing message1",
       "credentials": {
         "aws": {
@@ -2605,10 +2596,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        688,
-        800
+        -288,
+        -4096
       ],
-      "id": "eb3c47e6-e744-4bdb-ae5e-fd50eb3afb88",
+      "id": "287ad62a-bdac-43e2-a396-a0b52a03dbf1",
       "name": "close order1",
       "credentials": {
         "mySql": {
@@ -2626,10 +2617,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        384,
-        1200
+        -592,
+        -3696
       ],
-      "id": "4d1db438-be00-4f2e-bbf5-caaebfe8b086",
+      "id": "b8f995a8-d7e7-4553-8f6e-e6dae6ab2d21",
       "name": "invalid response answer1",
       "credentials": {
         "aws": {
@@ -2647,10 +2638,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        912,
-        48
+        -64,
+        -4848
       ],
-      "id": "f700f5e5-3995-4e90-8e67-6c53f32c270f",
+      "id": "e3ed3a7c-c16b-4a1f-becc-efab98e45772",
       "name": "menu listing1",
       "alwaysOutputData": false,
       "credentials": {
@@ -2679,10 +2670,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        688,
-        48
+        -288,
+        -4848
       ],
-      "id": "9c74f311-ef72-4e25-aa6a-354d3e89a3f5",
+      "id": "0223bdf4-ea72-4456-97fe-72fcff295ff2",
       "name": "propagate isUpdating1",
       "disabled": true
     },
@@ -2695,10 +2686,10 @@
       "type": "n8n-nodes-base.mySql",
       "typeVersion": 2.4,
       "position": [
-        1120,
-        48
+        160,
+        -4848
       ],
-      "id": "8eed3a17-7735-4216-a330-7f12ead57a64",
+      "id": "35207b8a-b5bd-4024-b875-2dc61f0acba1",
       "name": "set next step12",
       "credentials": {
         "mySql": {
@@ -2716,10 +2707,10 @@
       "type": "n8n-nodes-base.awsLambda",
       "typeVersion": 1,
       "position": [
-        1120,
-        304
+        160,
+        -4592
       ],
-      "id": "89e455ea-d006-40f9-b658-0f5a385044f2",
+      "id": "adda601b-8daa-48e4-a765-16407cee6074",
       "name": "send order confirmation2",
       "credentials": {
         "aws": {
@@ -2728,6 +2719,27 @@
         }
       },
       "disabled": true
+    },
+    {
+      "parameters": {
+        "function": "arn:aws:lambda:us-east-1:232828718281:function:channel-dispatcher",
+        "payload": "={\"order_id\": \"{{ $('Webhook1').item.json.body.order_id }}\", \"message\": { \"main_text\":\n\"📍Código: {{ $('Webhook1').item.json.body.display_id }}\\n📦 Pedido: {{ $('Webhook1').item.json.body.products.map((it) => `${it.amount} ${it.name} ${it.notes ?? \"\"}`).join(\"\\\\n\") }}\\n💸 Total (com taxa): R$ {{ $('Webhook1').item.json.body.products.reduce((acc, it) => acc+(it.amount*Number(it.price)), 0).toFixed(2).replace(\".\",\",\") }}\\n🚚 Modalidade: Retirada\\nEstamos finalizando a criação do seu pedido!\"\n}}"
+      },
+      "type": "n8n-nodes-base.awsLambda",
+      "typeVersion": 1,
+      "position": [
+        -1184,
+        -384
+      ],
+      "id": "67c84e7e-f28c-45ce-bc3f-e3a208ce8834",
+      "name": "msg send17",
+      "alwaysOutputData": false,
+      "credentials": {
+        "aws": {
+          "id": "GUrlqaypJqA4TddA",
+          "name": "AWS account"
+        }
+      }
     }
   ],
   "pinData": {
@@ -2895,20 +2907,21 @@
           "headers": {
             "host": "n8n.copaerp.site",
             "user-agent": "Go-http-client/2.0",
-            "content-length": "2919",
+            "content-length": "3154",
             "accept-encoding": "gzip",
             "content-type": "application/json",
-            "x-forwarded-for": "44.197.242.150",
+            "x-forwarded-for": "54.162.188.34",
             "x-forwarded-host": "n8n.copaerp.site",
             "x-forwarded-port": "443",
             "x-forwarded-proto": "https",
-            "x-forwarded-server": "1893138af994",
-            "x-real-ip": "44.197.242.150"
+            "x-forwarded-server": "f569be71e260",
+            "x-real-ip": "54.162.188.34"
           },
           "params": {},
           "query": {},
           "body": {
             "customer_id": "6186b034-cb04-4f3b-a029-1ac716af6a84",
+            "display_id": "MHSDAWHH9",
             "menu": [
               {
                 "category": "Lanches",
@@ -3007,16 +3020,27 @@
                 "price": "13.50"
               }
             ],
-            "message": "1",
-            "order_id": "540de54d-4527-43ea-988c-636cd19acbf2",
-            "order_last_message_at": "2025-06-25T02:17:28Z",
-            "order_status": "cancel_confirmation",
+            "message": "2",
+            "order_id": "cce1ac59-0423-4719-a19a-680057846266",
+            "order_last_message_at": "2025-11-09T23:53:35Z",
+            "order_status": "choosing_delivery_method",
             "products": [
               {
-                "id": "3e95e6e1-db35-4e01-9472-f7092a43a0e9",
-                "name": "Anéis de Cebola",
-                "notes": null,
-                "price": "12.00",
+                "id": "10d7adc1-2b24-40c3-a599-a7241a7e786e",
+                "name": "Cachorro-Quente Tradicional",
+                "price": "14.50",
+                "amount": 1
+              },
+              {
+                "id": "1f363c55-34db-4dca-b586-fcbd5d7f8804",
+                "name": "Suco Natural de Laranja",
+                "price": "8.00",
+                "amount": 1
+              },
+              {
+                "id": "3c21b014-5ce0-4bbe-9431-2e5e5e17f7af",
+                "name": "Brownie com Sorvete",
+                "price": "16.90",
                 "amount": 1
               }
             ],
@@ -3657,17 +3681,6 @@
         ]
       ]
     },
-    "msg send17": {
-      "main": [
-        [
-          {
-            "node": "close order4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "msg send16": {
       "main": [
         [
@@ -3933,14 +3946,26 @@
           }
         ]
       ]
+    },
+    "msg send17": {
+      "main": [
+        [
+          {
+            "node": "close order4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
-  "active": false,
+  "active": true,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "631f0d0b-d625-4305-a503-2607db6b5000",
+  "versionId": "18ffd400-d1b2-4360-95eb-53d2323ab0a6",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "7201b7a93db9e3abe28a42613ca84e2655d19adbe27f2cdc95ed05631266c3bf"
   },
   "id": "ffBBScaquwVvu8Wk",
